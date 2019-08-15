@@ -1,0 +1,35 @@
+<% if user_signed_in? %>
+  <li>
+    <%= link_to "/posts/new" do %>
+      <i class="material-icons left">create</i>新規投稿
+    <% end %>
+  </li>
+  <li>
+    <%= link_to "/users" do %>
+      <i class="material-icons left">people</i>ユーザー一覧
+    <% end %>
+  </li>
+  <li><div class="divider"></div></li>
+  <li>
+    <%= link_to "/users/#{current_user.id}" do %>
+    <i class="material-icons left">home</i>マイページ
+    <% end %>
+  </li>
+  <li>
+    <%= link_to destroy_user_session_path, method: :delete do %>
+      <i class="material-icons left">exit_to_app</i>サインアウト
+    <% end %>
+  </li>
+<% else %>
+  <li>
+    <%= link_to new_user_registration_path do %>
+      <i class="material-icons left">person_add</i>新規登録
+    <% end %>
+  </li>
+  <li>
+    <%= link_to new_user_session_path do %>
+      <i class="material-icons left">verified_user</i>サインイン
+    <% end %>
+  </li>
+<% end %>
+<li><div class="divider"></div></li>

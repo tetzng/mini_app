@@ -1,0 +1,17 @@
+<div class="contents row">
+  <h2><%= @user.name %>さんの投稿一覧</h2>
+  <% if @user.posts.present? %>
+    <% @posts.each do |post| %>
+      <%= render partial: "posts/post", locals: { post: post } %>
+    <% end %>
+  <% else %>
+    <div class="card">
+    <div class="col s12">
+    <p>まだ投稿がありません</p>
+    </div>
+    </div>
+  <% end %>
+</div>
+<div class="row blue lighten-2">
+  <%= paginate @posts %>
+</div>

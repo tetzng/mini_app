@@ -1,0 +1,105 @@
+<div class="contents row">
+  <div class="col s12 l7">
+    <h2><%= @post.title %></h2>
+    <div class="card">
+      <div class="card-image">
+        <% if @post.image.attached? %>
+          <%= image_tag @post.image %>
+        <% else %>
+          <%= image_tag "post_default.jpg" %>
+        <% end %>
+      </div>
+      <div class="card-content">
+        <p><%= simple_format(h(@post.text)) %></p>
+      </div>
+      <div class="card-action valign-wrapper">
+        <% if current_user == @post.user %>
+          <%= link_to "DESTROY", "/posts/#{@post.id}", method: :delete, class: "btn right waves-effect waves-light blue lighten-2 white-text" %>
+          <%= link_to "EDIT", "/posts/#{@post.id}/edit", class: "btn right waves-effect waves-light blue lighten-2 white-text" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col s12 l5">
+    <h3>投稿者の情報</h3>
+    <div class="card">
+      <div class="card-action">
+        <ul class="collection">
+          <li class="collection-item avatar">
+            <%= link_to "/users/#{@post.user.id}" do %>
+              <% if @post.user.avatar.attached? %>
+                <%= image_tag @post.user.avatar, class: "circle" %>
+              <% else %>
+                <%= image_tag "default_avatar.jpg", class: "circle" %>
+              <% end %>
+              <span class="title"><%= @post.user.name %></span>
+            <% end %>
+            <p>投稿数 : <%= @post.user.posts.length %>件<br>
+              最新の記事 : <%= link_to @post.user.posts.last.title, "/posts/#{@post.user.posts.last.id}" %>
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <% unless @comments.empty? %>
+    <div class="col s12">
+      <h3>コメント一覧</h3>
+      <div class="card">
+        <div class="card-content">
+          <ul class="collection">
+            <% @comments.each do |comment| %>
+              <li class="collection-item avatar">
+                <%= link_to "/users/#{comment.user.id}" do %>
+                  <% if comment.user.avatar.attached? %>
+                    <%= image_tag comment.user.avatar, class: "circle" %>
+                  <% else %>
+                    <%= image_tag "default_avatar.jpg", class: "circle" %>
+                  <% end %>
+                  <span class="title"><%= comment.user.name %></span>
+                <% end %>
+                <p><%= comment.text %></p>
+              </li>
+            <% end %>
+          </ul>
+          <ul class="blue lighten-2">
+            <%= paginate @comments %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <% if user_signed_in? %>
+    <div class="col s12">
+      <h3>コメントを投稿する</h3>
+      <div class="card">
+        <%= form_with url: "/posts/#{@post.id}/comments" , method: :post do |f| %>
+          <div class="row">
+            <div class="card-content">
+              <ul class="collection">
+                <li class="collection-item avatar">
+                  <% if current_user.avatar.attached? %>
+                    <%= image_tag current_user.avatar, class: "circle" %>
+                  <% else %>
+                    <%= image_tag "default_avatar.jpg", class: "circle" %>
+                  <% end %>
+                  <span class="title"><%= current_user.name %></span>
+                  <div class="input-field col s12">
+                    <%= f.label :text, 'コメント' %>
+                    <%= f.text_area :text, class: "materialize-textarea" %>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="actions col s12">
+            <%= button_tag type: 'submit', class: "btn blue lighten-2 white-text" do %>
+              <i class="material-icons left">send</i>SUBMIT
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

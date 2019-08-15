@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mini App</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+
+  <body>
+    <nav class="blue lighten-2">
+      <div class="nav-wrapper">
+        <%= link_to "Mini App", root_path, class: "brand-logo" %>
+        <ul id="slide-out" class="sidenav">
+          <li>
+            <div class="user-view">
+              <div class="background blue darken-2">
+              </div>
+              <% if user_signed_in? %>
+                <% if current_user.avatar.attached? %>
+                  <%= image_tag current_user.avatar, class: "circle" %>
+                <% else %>
+                  <%= image_tag "default_avatar.jpg", class: "circle" %>
+                <% end %>
+                <a><span class="white-text name"><%= current_user.name %></span></a>
+                <a><span class="white-text email"><%= current_user.email %></span></a>
+              <% end %>
+            </div>
+          </li>
+          <%= render "layouts/menu" %>
+          <li><a class="sidenav-close" ><i class="material-icons left">close</i>メニューを閉じる</a></li>
+        </ul>
+
+        <a href="" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <%= render "layouts/menu" %>
+        </ul>
+      </div>
+    </nav>
+    <div class="fixed-action-btn">
+      <a class="btn-floating btn-large red" href="/posts/new">
+        <i class="large material-icons">mode_edit</i>
+      </a>
+    </div>
+    <div class="container">
+      <%= yield %>
+    </div>
+    <footer class="page-footer blue lighten-2">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Mini App</h5>
+                <p class="grey-text text-lighten-4">
+                <ul>
+                  User機能:
+                  <li>Userがログイン / ログアウト / サインアップできる</li>
+                </ul>
+                <ul>
+                  ブログ機能:
+                  <li>Userがブログを投稿できる。</li>
+                  <li>Userが自分のブログを編集・削除できる。</li>
+                  <li>ログインしていなくても全てのブログを閲覧できる。</li>
+                  <li>フォームのヘルパーメソッドに「form_with」を使っている</li>
+                  <li>※ 一覧表示に「部分テンプレート」を使用している。</li></p>
+                </ul>
+                <ul>
+                  その他機能:
+                  <li>コメントの投稿が出来る</li>
+                  <li>編集と削除はまだ…</li>
+                </ul>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container center-align">
+            © 2019 Copyright Mini APP
+            </div>
+          </div>
+        </footer>
+  </body>
+</html>

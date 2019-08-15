@@ -1,0 +1,58 @@
+<div class = "contents row">
+  <h2>Sign up</h2>
+  <div class="card">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="input-field col s9">
+        <%= f.label :name %>
+        <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+      </div>
+
+    <div class="row">
+      <div class="input-field col s9">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s9">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %>
+        <%= f.password_field :password, autocomplete: "new-password" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s9">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="file-field input-field col s10">
+        <div class="btn blue lighten-2">
+          <%= f.label :avatar do %>
+            <i class="material-icons left img-btn">portrait</i>画像
+          <% end %>
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text" placeholder="画像を選択してください">
+          <%= f.file_field :avatar %>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions col s12">
+      <%= button_tag type: 'submit', class: "btn blue lighten-2 white-text send-btn" do %>
+        <i class="material-icons left">send</i>新規登録
+      <% end %>
+    </div>
+  <% end %>
+</div>
+<%= render "users/shared/links" %>
+</div>

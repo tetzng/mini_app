@@ -1,0 +1,13 @@
+<div class="contents row">
+  <%= form_with url: post_comments_path , method: :post do |f| %>
+    <div class="input-field">
+      <%= f.label :text, 'コメント' %>
+      <%= f.text_area :text %>
+    </div>
+    <div class="actions">
+      <%= button_tag type: 'submit', class: "btn blue lighten-2 white-text" do %>
+        <i class="material-icons left">send</i>SUBMIT
+      <% end %>
+    </div>
+  <% end %>
+</div>

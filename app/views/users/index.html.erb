@@ -1,0 +1,30 @@
+<div class="contents row">
+<h2>ユーザー一覧</h2>
+  <ul class="collection">
+    <% @users.each do |user| %>
+    <li class="collection-item avatar">
+      <%= link_to "/users/#{user.id}" do %>
+        <% if user.avatar.attached? %>
+          <%= image_tag user.avatar, class: "circle" %>
+        <% else %>
+          <%= image_tag "default_avatar.jpg", class: "circle" %>
+        <% end %>
+        <span class="title"><%= user.name %></span>
+      <% end %>
+      <p>投稿数 : <%= user.posts.length %>件<br>
+        <% if user.posts.present? %>
+          最新の記事 : <%= link_to user.posts.last.title, "/posts/#{user.posts.last.id}" %>
+        <% else %>
+          まだ投稿がありません
+        <% end %>
+      </p>
+      <%= link_to "/users/#{user.id}", class: "btn secondary-content blue lighten-2" do %>
+        <i class="material-icons">list</i>
+      <% end %>
+    </li>
+    <% end %>
+  </ul>
+</div>
+<div class="row blue lighten-2">
+  <%= paginate @users %>
+</div>
