@@ -15,15 +15,6 @@
         </div>
       </div>
 
-      <% if devise_mapping.rememberable? %>
-        <div class="row">
-          <div class="input-field col s9">
-            <%= f.check_box :remember_me %>
-            <%= f.label :remember_me %>
-          </div>
-        </div>
-      <% end %>
-
       <div class="actions col s12">
         <%= button_tag type: 'submit', class: "btn blue lighten-2 white-text send-btn" do %>
           <i class="material-icons left">verified_user</i>ログイン

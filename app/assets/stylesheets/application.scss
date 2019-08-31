@@ -42,3 +42,13 @@ h3 {
 .brand-logo {
   left: 5%;
 }
+
+.pagination span{
+  font-size: 1.3rem;
+  padding: 0 5px;
+}
+
+.pagination .current{
+  color: rgb(244, 216, 54);
+  font-weight: bold;
+}

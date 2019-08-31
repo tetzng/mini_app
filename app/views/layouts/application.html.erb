@@ -5,8 +5,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'load' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'load' %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
 
@@ -69,16 +69,46 @@
                 <ul>
                   その他機能:
                   <li>コメントの投稿が出来る</li>
-                  <li>編集と削除はまだ…</li>
+                  <li>ユーザー一覧ページ</li>
+                  <li>ページネーション</li>
                 </ul>
               </div>
               <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
+                <h5 class="white-text">Menu</h5>
                 <ul>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                 <% if user_signed_in? %>
+                    <li>
+                      <%= link_to "/posts/new", class: "grey-text text-lighten-3" do %>
+                        新規投稿
+                      <% end %>
+                    </li>
+                    <li>
+                      <%= link_to "/users", class: "grey-text text-lighten-3" do %>
+                        ユーザー一覧
+                      <% end %>
+                    </li>
+                    <li>
+                      <%= link_to "/users/#{current_user.id}", class: "grey-text text-lighten-3" do %>
+                        マイページ
+                      <% end %>
+                    </li>
+                    <li>
+                      <%= link_to destroy_user_session_path, method: :delete, class: "grey-text text-lighten-3" do %>
+                        サインアウト
+                      <% end %>
+                    </li>
+                  <% else %>
+                    <li>
+                      <%= link_to new_user_registration_path, class: "grey-text text-lighten-3" do %>
+                        新規登録
+                      <% end %>
+                    </li>
+                    <li>
+                      <%= link_to new_user_session_path, class: "grey-text text-lighten-3" do %>
+                        サインイン
+                      <% end %>
+                    </li>
+                  <% end %>
                 </ul>
               </div>
             </div>

@@ -5,24 +5,14 @@
 //= require turbolinks
 //= require_tree .
 
-document.addEventListener('DOMContentLoaded', function() {
-  var elems = document.querySelectorAll('#slide-out');
-  var instances = M.Sidenav.init(elems, "edge");
-
-  var elems = document.querySelectorAll('.dropdown-trigger');
-  var instances = M.Dropdown.init(elems, "alignment");
+document.addEventListener('turbolinks:load', function() {
+  elem = document.querySelector('#slide-out');
+  instance = new M.Sidenav(elem, {});
 });
-
-// // $(document).ready(function(){
-// //   $('.sidenav').sidenav("edge");
-// //   console.log("aaaaaaaaaa");
-// // });
-
-// // $('.dropdown-trigger').dropdown();
-
-document.addEventListener('DOMContentLoaded', function() {
-  var elems = document.querySelectorAll('.fixed-action-btn');
-  var instances = M.FloatingActionButton.init(elems, {
-    direction: 'bottom'
-  });
+document.addEventListener('turbolinks:before-visit', function() {
+  elem = document.querySelector('#slide-out');
+  instance = M.Sidenav.getInstance(elem);
+  if (instance){
+    instance.destroy();
+  }
 });
