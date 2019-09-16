@@ -67,3 +67,4 @@ gem 'materialize-sass', '~> 1.0.0'
 gem 'material_icons'
 gem "jquery-rails"
 gem 'kaminari', '~> 0.17.0'
+gem 'aws-sdk-s3', require: false
