@@ -10,13 +10,13 @@ This is my first app. It's a blog that mainly posts images.
 [![Image from Gyazo](https://i.gyazo.com/3d612d1d8bee03cc5d1877aa12b5540c.gif)](https://gyazo.com/3d612d1d8bee03cc5d1877aa12b5540c)
 
 ## Dependency
-ruby '2.5.1'
-'rails', '~> 5.2.2', '>= 5.2.2.1'
-'devise', '>= 4.7.1'
-'materialize-sass', '~> 1.0.0'
-'material_icons'
-'jquery-rails'
-'kaminari', '~> 0.17.0'
+- ruby '2.5.1'
+- 'rails', '~> 5.2.2', '>= 5.2.2.1'
+- 'devise', '>= 4.7.1'
+- 'materialize-sass', '~> 1.0.0'
+- 'material_icons'
+- 'jquery-rails'
+- 'kaminari', '~> 0.17.0'
 
 ## Author
 [tetzng](https://github.com/tetzng)
