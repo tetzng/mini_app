@@ -18,8 +18,8 @@
           <li>
             <div class="user-view">
               <div class="background blue darken-2">
-              </div>
               <% if user_signed_in? %>
+              </div>
                 <% if current_user.avatar.attached? %>
                   <%= image_tag current_user.avatar, class: "circle" %>
                 <% else %>
