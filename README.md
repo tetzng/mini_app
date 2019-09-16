@@ -1,24 +1,22 @@
-# README
+mini_app
+====
+This is my first app. It's a blog that mainly posts images.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Description
+ユーザーのログイン無しで記事やコメントの閲覧が可能です。
+ユーザー登録・ログイン後は記事やコメントの投稿が可能です。
 
-Things you may want to cover:
+## Demo
+[![Image from Gyazo](https://i.gyazo.com/3d612d1d8bee03cc5d1877aa12b5540c.gif)](https://gyazo.com/3d612d1d8bee03cc5d1877aa12b5540c)
 
-* Ruby version
+## Dependency
+ruby '2.5.1'
+'rails', '~> 5.2.2', '>= 5.2.2.1'
+'devise', '>= 4.7.1'
+'materialize-sass', '~> 1.0.0'
+'material_icons'
+'jquery-rails'
+'kaminari', '~> 0.17.0'
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Author
+[tetzng](https://github.com/tetzng)
